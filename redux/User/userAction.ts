@@ -1,7 +1,7 @@
 import { userActionTypes } from "./userTypes";
 
 export interface SetUserAction {
-  type: string;
+  type: userActionTypes.SET_CURRENT_USER;
   payload: SetUserPayLoad;
 }
 

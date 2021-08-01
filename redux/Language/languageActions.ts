@@ -1,16 +1,20 @@
 import { LangActionsTypes } from "./languageTypes";
 
-export interface setLanguageAction {
-  type: string;
+export interface setEnglishLanguageAction {
+  type: LangActionsTypes.SET_ENGLISH;
 }
 
-export const setEnglish = (): setLanguageAction => {
+export interface setArabicLanguageAction {
+  type: LangActionsTypes.SET_ARABIC;
+}
+
+export const setEnglish = (): setEnglishLanguageAction => {
   return {
     type: LangActionsTypes.SET_ENGLISH,
   };
 };
 
-export const setArabic = (): setLanguageAction => {
+export const setArabic = (): setArabicLanguageAction => {
   return {
     type: LangActionsTypes.SET_ARABIC,
   };

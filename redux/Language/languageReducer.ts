@@ -1,6 +1,9 @@
 import { LangActionsTypes } from "./languageTypes";
 import { ScreenArabic, ScreenEnglish } from "./languageUtils";
-import { setLanguageAction } from "./languageActions";
+import {
+  setArabicLanguageAction,
+  setEnglishLanguageAction,
+} from "./languageActions";
 
 export interface LanguageState {
   ScreenLanguage: object;
@@ -10,7 +13,7 @@ const INITAIL_STATE: LanguageState = {
   ScreenLanguage: ScreenEnglish,
 };
 
-type Action = setLanguageAction;
+type Action = setEnglishLanguageAction | setArabicLanguageAction;
 
 const langugaeReducer = (
   state = INITAIL_STATE,
