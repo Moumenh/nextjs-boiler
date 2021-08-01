@@ -2,14 +2,29 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import React from "react";
-import { connect } from "react-redux";
+import { connect, ResolveThunks } from "react-redux";
 import { ApplicationState } from "../redux/rootReducer";
+import { setUser } from "../redux/User/userAction";
 
-interface Props {
+interface OwnProps {
   name: string | null | undefined;
 }
 
-const Home = ({ name }: Props) => {
+const mapStateToProps = ({ user: { name } }: ApplicationState) => {
+  return {
+    name,
+  };
+};
+
+const mapDispatchToProps = {
+  setUser,
+};
+
+type Props = OwnProps &
+  ResolveThunks<typeof mapDispatchToProps> &
+  ReturnType<typeof mapStateToProps>;
+
+const Home = ({ name, setUser }: Props) => {
   return (
     <div className={styles.container}>
       <Head>
@@ -20,6 +35,19 @@ const Home = ({ name }: Props) => {
 
       <main className={styles.main}>
         <div>{name}</div>
+        <button
+          onClick={() => {
+            setUser({
+              id: 1,
+              name: "changed",
+              phoneNumber: 123123,
+              email: "mr_momocom@gmail.com",
+              role: 4,
+            });
+          }}
+        >
+          try dispatching action
+        </button>
       </main>
 
       <footer className={styles.footer}>
@@ -38,10 +66,4 @@ const Home = ({ name }: Props) => {
   );
 };
 
-const mapStateToProps = ({ user: { name } }: ApplicationState) => {
-  return {
-    name,
-  };
-};
-
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
