@@ -4,7 +4,12 @@ import styles from "../styles/Home.module.css";
 import React from "react";
 import { connect } from "react-redux";
 import { ApplicationState } from "../redux/rootReducer";
-const Home = ({ name }: any) => {
+
+interface Props {
+  name: string | null | undefined;
+}
+
+const Home = ({ name }: Props) => {
   return (
     <div className={styles.container}>
       <Head>
