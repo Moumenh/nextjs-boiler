@@ -3,7 +3,7 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import React from "react";
 import { connect } from "react-redux";
-
+import { ApplicationState } from "../redux/rootReducer";
 const Home = ({ name }: any) => {
   return (
     <div className={styles.container}>
@@ -33,7 +33,7 @@ const Home = ({ name }: any) => {
   );
 };
 
-const mapStateToProps = ({ user: { name } }: any) => {
+const mapStateToProps = ({ user: { name } }: ApplicationState) => {
   return {
     name,
   };

@@ -1,7 +1,7 @@
 import { userActionTypes } from "./userTypes";
 import { SetUserAction } from "./userAction";
 
-interface State {
+export interface UserState {
   name?: string | null;
   id?: number | null;
   role?: number | null;
@@ -9,7 +9,7 @@ interface State {
   phoneNumber?: number | null;
 }
 
-const INITAIL_STATE: State = {
+const INITAIL_STATE: UserState = {
   name: "Welcome",
   id: null,
   role: null,
@@ -19,7 +19,7 @@ const INITAIL_STATE: State = {
 
 type Action = SetUserAction;
 
-const userReducer = (state = INITAIL_STATE, action: Action): State => {
+const userReducer = (state = INITAIL_STATE, action: Action): UserState => {
   switch (action.type) {
     case userActionTypes.SET_CURRENT_USER:
       return {

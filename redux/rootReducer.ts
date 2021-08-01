@@ -1,9 +1,13 @@
 import { combineReducers } from "redux";
 
-import userReducer from "./User/userReducer";
+import userReducer, { UserState } from "./User/userReducer";
 // import languageReducer from "./Language/languageReducer";
 
-export default combineReducers({
+export interface ApplicationState {
+  user: UserState;
+}
+
+export default combineReducers<ApplicationState>({
   user: userReducer,
   //   language: languageReducer,
-} as any);
+});
