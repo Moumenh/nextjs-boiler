@@ -6,9 +6,7 @@ import { connect, ResolveThunks } from "react-redux";
 import { ApplicationState } from "../redux/rootReducer";
 import { setUser } from "../redux/User/userAction";
 
-interface OwnProps {
-  name: string | null | undefined;
-}
+interface OwnProps {}
 
 const mapStateToProps = ({ user: { name } }: ApplicationState) => {
   return {
